@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CatGPT - NLP Cat Bot</title>
+    <style>
+        body { font-family: 'Courier New', monospace; max-width: 800px; margin: 0 auto; padding: 20px; background: #f0f0f0; }
+        .chat-box { background: white; border-radius: 10px; padding: 20px; height: 500px; overflow-y: auto; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .user-message { color: #2c3e50; margin: 15px 0; padding: 10px; background: #ecf0f1; border-radius: 5px; }
+        .bot-message { color: #e74c3c; margin: 15px 0; padding: 10px; background: #fff; border-radius: 5px; border-left: 4px solid #e74c3c; }
+        input[type="text"] { width: 75%; padding: 12px; border: 2px solid #e74c3c; border-radius: 5px; margin-right: 10px; }
+        button { padding: 12px 25px; background: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #c0392b; }
+        .cat-icon { font-size: 24px; margin-right: 10px; }
+    </style>
+</head>
+<body>
+    <h1><span class="cat-icon">😺</span>CatGPT - NLP Cat</h1>
+    <div class="chat-box">
+        {% for sender, message in history %}
+            {% if sender == 'user' %}
+                <div class="user-message">You: {{ message }}</div>
+            {% else %}
+                <div class="bot-message">CatGPT: {{ message }}</div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <form method="POST" style="margin-top: 20px;">
+        <input type="text" name="message" placeholder="Speak to the cat..." autofocus>
+        <button type="submit">Send</button>
+    </form>
+</body>
+</html>
